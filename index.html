@@ -1,1615 +1,506 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Как говорить с директором филиала на языке P&L — Иван Пичугин</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Приглашение на День рождения Ивана Пичугина — Автомобилист vs Трактор</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-    :root {
-      --bg-page: #F4F6F9;
-      --bg-card: #FFFFFF;
-      --text-main: #0F172A;
-      --text-sub: #475569;
-      --text-muted: #64748B;
-      --rt-purple: #5B36D6;
-      --rt-orange: #FF4F12;
-      --accent-soft-purple: #F3F0FD;
-      --accent-soft-orange: #FFF4EF;
-      --accent-green: #16A34A;
-      --accent-soft-green: #F0FDF4;
-      --border-card: #E2E8F0;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
-      -webkit-tap-highlight-color: transparent;
-    }
-
     body {
-      background-color: var(--bg-page);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      min-height: 100dvh;
-      overflow-x: hidden;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #0b0f17;
+      color: #f8fafc;
     }
-
-    /* Верхняя панель */
-    .top-nav {
-      min-height: 54px;
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--border-card);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 16px;
-      flex-shrink: 0;
-      z-index: 100;
-      gap: 12px;
-      position: sticky;
-      top: 0;
+    .ice-grid {
+      background-image:
+        radial-gradient(circle at 20% 15%, rgba(220, 38, 38, 0.16), transparent 45%),
+        radial-gradient(circle at 80% 10%, rgba(245, 158, 11, 0.12), transparent 40%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.96) 0%, #0b0f17 100%);
     }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--rt-purple);
-      white-space: nowrap;
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-6px) rotate(-1deg); }
+      40% { transform: translateX(6px) rotate(1deg); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
     }
-    .brand-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--rt-orange);
-      flex-shrink: 0;
+    .animate-shake {
+      animation: shake 0.42s ease-in-out;
     }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 980px;
-      font-size: 11px;
-      font-weight: 600;
-      background: #F1F5F9;
-      color: var(--text-sub);
-      white-space: nowrap;
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.95) translateY(4px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
     }
-    .status-badge.speaker {
-      background: var(--accent-soft-purple);
-      color: var(--rt-purple);
-      border: 1px solid rgba(91, 54, 214, 0.25);
-    }
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent-green);
-      animation: pulse 1.6s infinite ease-in-out;
-      flex-shrink: 0;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(0.9); opacity: 0.6; }
-      50% { transform: scale(1.25); opacity: 1; }
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn {
-      padding: 7px 13px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 600;
-      border: 1px solid var(--border-card);
-      background: #FFFFFF;
-      color: var(--text-main);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-    .btn:hover { background: #F8FAFC; }
-    .btn-primary { background: var(--rt-purple); color: #FFFFFF; border-color: var(--rt-purple); }
-    .btn-primary:hover { background: #4C2BB7; }
-    .btn-orange { background: var(--rt-orange); color: #FFFFFF; border-color: var(--rt-orange); }
-    .btn-orange:hover { background: #E03E05; }
-    .btn-queue {
-      background: var(--accent-soft-orange);
-      color: var(--rt-orange);
-      border-color: rgba(255, 79, 18, 0.3);
-    }
-
-    /* Рабочая область просмотра */
-    .viewport {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .slide-frame {
-      width: 100%;
-      max-width: 1280px;
-      min-height: 580px;
-      background: var(--bg-page);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 36px 40px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .header-group {
-      margin-bottom: 22px;
-      flex-shrink: 0;
-    }
-    .tag {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--rt-purple);
-      margin-bottom: 6px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .tag::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--rt-orange);
-    }
-    .slide-title {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-      color: var(--text-main);
-    }
-
-    .slide-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Нижняя панель навигации */
-    .bottom-bar {
-      min-height: 52px;
-      background: #FFFFFF;
-      border-top: 1px solid var(--border-card);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 16px;
-      flex-shrink: 0;
-      position: sticky;
-      bottom: 0;
-      z-index: 90;
-    }
-    .counter {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-
-    /* Слайд 1: Титул (без дублей) */
-    .hero-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px 0;
-      max-width: 900px;
-      margin: auto;
-    }
-    .hero-title {
-      font-size: 44px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 18px;
-      color: var(--text-main);
-    }
-    .hero-subtitle {
-      font-size: 19px;
-      color: var(--text-sub);
-      line-height: 1.45;
-      margin-bottom: 28px;
-      max-width: 740px;
-    }
-    .speaker-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 22px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: 980px;
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 36px;
-    }
-    .agenda-box-title {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--rt-purple);
-      margin-bottom: 14px;
-      text-align: left;
-    }
-    .agenda-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      text-align: left;
-      width: 100%;
-    }
-    .agenda-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .agenda-num {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--accent-soft-purple);
-      color: var(--rt-purple);
-      font-size: 12px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .agenda-text-title {
-      font-size: 14.5px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .agenda-text-desc {
-      font-size: 13px;
-      color: var(--text-sub);
-      line-height: 1.4;
-    }
-
-    /* Слайд 2: Профиль */
-    .profile-grid {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 20px;
-    }
-    .summary-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .stat-badge {
-      background: var(--accent-soft-purple);
-      border-radius: var(--radius-sm);
-      padding: 14px;
-    }
-    .stat-val { font-size: 26px; font-weight: 800; color: var(--rt-purple); margin-bottom: 4px; }
-    .stat-lbl { font-size: 12px; font-weight: 500; color: var(--text-sub); }
-    .profile-list { display: flex; flex-direction: column; gap: 12px; }
-    .profile-row {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-    }
-
-    /* Слайд 3: KPI */
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-    .kpi-box {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 20px 16px;
-      text-align: center;
-    }
-    .kpi-num { font-size: 36px; font-weight: 800; color: var(--rt-purple); margin-bottom: 6px; }
-    .kpi-lbl { font-size: 13px; color: var(--text-sub); }
-    .kpi-insight {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .insight-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 20px 22px;
-    }
-
-    /* Общие сетки */
-    .three-cols {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .col-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .col-card.lead { border: 2px solid var(--rt-purple); background: #FAF9FF; }
-
-    .matrix-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .prod-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 18px 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    /* Слайд 8: Практикум и форма One-Pager */
-    .ws-container {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 20px;
-    }
-    .timer-panel {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 12px;
-    }
-    .timer-digits {
-      font-size: 52px;
-      font-weight: 800;
-      color: var(--rt-orange);
-      letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums;
-    }
-    .timer-status {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-    .timer-controls {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .form-panel {
-      background: #FFFFFF;
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .form-row {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .form-label {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--rt-purple);
-      letter-spacing: 0.04em;
-    }
-    .form-input, .form-textarea {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid var(--border-card);
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 14.5px;
-      color: var(--text-main);
-      background: #FAF8FC;
-    }
-    .form-textarea { resize: vertical; min-height: 56px; }
-    .form-input:focus, .form-textarea:focus {
-      outline: none;
-      border-color: var(--rt-purple);
-      background: #FFFFFF;
-    }
-
-    .projected-case-banner {
-      display: none;
-      background: #FFFFFF;
-      border: 2px solid var(--rt-purple);
-      border-radius: var(--radius-md);
-      padding: 22px;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    /* Модальное окно очереди */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 16px;
-    }
-    .modal-box {
-      width: 100%;
-      max-width: 640px;
-      background: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      max-height: 85vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .modal-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    .queue-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      overflow-y: auto;
-    }
-    .queue-item {
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-sm);
-      padding: 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #F8FAFC;
-      gap: 12px;
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 66px;
-      right: 16px;
-      left: 16px;
-      max-width: 420px;
-      margin: 0 auto;
-      background: #0F172A;
-      color: #FFFFFF;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-size: 13.5px;
-      font-weight: 500;
-      display: none;
-      z-index: 1000;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-      text-align: center;
-    }
-
-    /* ========================================================
-       АДАПТИВНОСТЬ ДЛЯ СМАРТФОНОВ И ПЛАНШЕТОВ (MOBILE FIRST)
-       ======================================================== */
-    @media (max-width: 900px) {
-      .viewport {
-        padding: 10px 8px;
-      }
-      .slide-frame {
-        padding: 20px 16px;
-        min-height: auto;
-        border-radius: var(--radius-sm);
-      }
-      .hero-title {
-        font-size: 28px;
-        line-height: 1.2;
-      }
-      .hero-subtitle {
-        font-size: 15px;
-        margin-bottom: 20px;
-      }
-      .slide-title {
-        font-size: 20px;
-      }
-      .agenda-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      .profile-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      .kpi-row {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-      .kpi-num {
-        font-size: 28px;
-      }
-      .kpi-insight {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      .three-cols {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      .matrix-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      /* На Слайде 8: вертикальное расположение без необходимости крутить телефон */
-      .ws-container {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      .timer-digits {
-        font-size: 40px;
-      }
-      .form-input, .form-textarea {
-        font-size: 16px; /* Предотвращает нежелательный зум на iPhone */
-      }
-      .nav-brand span:last-child {
-        display: none;
-      }
-      .status-badge {
-        font-size: 10px;
-        padding: 3px 8px;
-      }
-      .top-nav {
-        padding: 6px 12px;
-      }
-      .btn {
-        padding: 6px 10px;
-        font-size: 11.5px;
-      }
+    .animate-pop {
+      animation: popIn 0.25s ease-out forwards;
     }
   </style>
 </head>
-<body>
+<body class="ice-grid min-h-[100dvh] flex items-center justify-center p-2.5 sm:p-5 antialiased selection:bg-red-600 selection:text-white">
+  <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-50 w-full h-full"></canvas>
 
-  <!-- Верхняя навигация -->
-  <header class="top-nav">
-    <div class="nav-brand">
-      <span class="brand-dot"></span>
-      <span>Цифровые регионы</span>
-      <span style="color:var(--text-muted); font-weight:500;">/ P&L</span>
-    </div>
-
-    <div id="roleBadge" class="status-badge">
-      <span class="pulse-dot"></span>
-      <span id="roleText">Подключение...</span>
-    </div>
-
-    <div class="nav-actions">
-      <button id="btnQueue" class="btn btn-queue" style="display: none;" onclick="openQueueModal()">
-        <span>📩 Кейсы</span>
-        <strong id="queueCounter">(0)</strong>
-      </button>
-
-      <button id="btnAuth" class="btn" onclick="promptAuth()">
-        <span id="authIcon">🔒</span>
-        <span id="authText">Спикер</span>
+  <main class="w-full max-w-xl rounded-2xl sm:rounded-3xl bg-slate-900/95 border border-slate-800 shadow-2xl overflow-hidden">
+    <!-- Top Bar -->
+    <div class="px-4 py-2.5 sm:px-6 sm:py-3 border-b border-slate-800/80 flex items-center justify-between gap-2 text-[11px] font-bold uppercase tracking-wider">
+      <div class="inline-flex items-center gap-2 text-red-300">
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+        <span>Уральское дерби КХЛ</span>
+      </div>
+      <button id="soundToggleBtn" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 transition">
+        <span id="soundIcon">🔊</span>
+        <span id="soundLabel">Звук: вкл</span>
       </button>
     </div>
-  </header>
 
-  <!-- Проектор слайдов -->
-  <main class="viewport">
-    <div class="slide-frame" id="slideFrame">
-      <!-- Слайды генерируются через JS -->
-    </div>
+    <!-- Main Info -->
+    <section class="p-4 sm:p-6 space-y-3 sm:space-y-4">
+      <div class="space-y-1.5">
+        <h1 class="text-xl sm:text-3xl font-black tracking-tight text-white leading-tight">
+          Шайбу! Шайбу! <span class="text-red-400">День рождения Ивана Пичугина</span>
+        </h1>
+        <p class="text-slate-300 text-xs sm:text-sm leading-snug">
+          Паспортный ДР прошёл <strong class="text-white">18 ноября</strong>, но по регламенту отличной компании главный матч с друзьями — <strong class="text-white">3 декабря</strong>. Успеваем на стартовое вбрасывание!
+        </p>
+      </div>
+
+      <!-- Match & Arena Strip -->
+      <div class="grid grid-cols-3 gap-2 text-center">
+        <div class="rounded-xl bg-slate-800/70 border border-slate-700/70 p-2 sm:p-2.5">
+          <div class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Матч</div>
+          <div class="text-xs sm:text-sm font-extrabold text-white mt-0.5 leading-tight">Автомобилист — Трактор</div>
+        </div>
+        <div class="rounded-xl bg-slate-800/70 border border-slate-700/70 p-2 sm:p-2.5">
+          <div class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Старт</div>
+          <div class="text-xs sm:text-sm font-extrabold text-amber-300 mt-0.5 leading-tight">3 дек, 19:00</div>
+        </div>
+        <div class="rounded-xl bg-slate-800/70 border border-slate-700/70 p-2 sm:p-2.5">
+          <div class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">УГМК-Арена • Ложа 14</div>
+          <div class="text-[11px] sm:text-xs font-bold text-slate-200 mt-0.5 leading-tight">Сбор в 14 ложе • Разина, 15</div>
+        </div>
+      </div>
+
+      <!-- Countdown -->
+      <div class="grid grid-cols-4 gap-2 text-center" id="countdownGrid">
+        <div class="rounded-xl bg-slate-950/70 border border-slate-800 py-1.5 sm:py-2 px-1">
+          <div id="cdDays" class="text-lg sm:text-2xl font-black text-white leading-none">--</div>
+          <div class="text-[10px] uppercase text-slate-400 mt-1">дней</div>
+        </div>
+        <div class="rounded-xl bg-slate-950/70 border border-slate-800 py-1.5 sm:py-2 px-1">
+          <div id="cdHours" class="text-lg sm:text-2xl font-black text-white leading-none">--</div>
+          <div class="text-[10px] uppercase text-slate-400 mt-1">часов</div>
+        </div>
+        <div class="rounded-xl bg-slate-950/70 border border-slate-800 py-1.5 sm:py-2 px-1">
+          <div id="cdMins" class="text-lg sm:text-2xl font-black text-white leading-none">--</div>
+          <div class="text-[10px] uppercase text-slate-400 mt-1">минут</div>
+        </div>
+        <div class="rounded-xl bg-slate-950/70 border border-slate-800 py-1.5 sm:py-2 px-1">
+          <div id="cdSecs" class="text-lg sm:text-2xl font-black text-red-400 leading-none">--</div>
+          <div class="text-[10px] uppercase text-slate-400 mt-1">секунд</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive RSVP Section -->
+    <section id="rsvpSection" class="bg-slate-950/70 border-t border-dashed border-slate-700/90 p-4 sm:p-6 space-y-3">
+      <div class="flex items-center justify-between gap-2">
+        <h2 class="text-sm sm:text-base font-extrabold text-white">Заявка в состав на матч</h2>
+        <div id="attemptCounterBadge" class="hidden px-2.5 py-0.5 rounded-full bg-red-500/15 border border-red-500/30 text-red-300 text-[11px] font-bold">
+          Штраф: <span id="penaltyMinutes">0</span> мин
+        </div>
+      </div>
+
+      <!-- Referee Rejection Box -->
+      <div id="refereeBox" class="hidden rounded-xl border p-3 sm:p-3.5 space-y-1 transition-all">
+        <div class="flex flex-wrap items-center gap-2 text-[11px] font-extrabold uppercase tracking-wider">
+          <span id="refBadge" class="px-2 py-0.5 rounded"></span>
+          <span id="refTitle" class="text-white"></span>
+        </div>
+        <p id="refMessage" class="text-xs sm:text-sm text-slate-200 leading-snug"></p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div id="rsvpButtons" class="flex flex-col sm:flex-row gap-2.5">
+        <button
+          id="btnAccept"
+          type="button"
+          class="flex-1 py-3 sm:py-3.5 px-5 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-red-600/25 transition active:scale-[0.98] flex items-center justify-center gap-2"
+        >
+          <span>🏒</span>
+          <span>Точно буду! Выхожу на лёд</span>
+        </button>
+
+        <button
+          id="btnDecline"
+          type="button"
+          class="sm:w-auto py-3 sm:py-3.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5"
+        >
+          <span>🏳️</span>
+          <span id="declineBtnText">Не смогу / Пасую</span>
+        </button>
+      </div>
+
+      <!-- Confirmed State -->
+      <div id="confirmedCard" class="hidden rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-3.5 sm:p-4 space-y-3 animate-pop">
+        <div class="flex items-center justify-between gap-2">
+          <div class="text-xs sm:text-sm font-extrabold text-emerald-300">
+            🚨 Гол! Ты в первом звене!
+          </div>
+          <button id="resetRsvpBtn" type="button" class="text-[11px] text-slate-400 hover:text-white underline">Назад</button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <input
+            id="guestNameInput"
+            type="text"
+            placeholder="Твоё имя (например, Алексей)"
+            class="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400"
+          />
+          <select
+            id="guestRoleSelect"
+            class="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-emerald-400"
+          >
+            <option value="Центрфорвард (отвечаю за тосты)">Центрфорвард (за тосты)</option>
+            <option value="Крайний нападающий (кричу «Шайбу!» громче всех)">Нападающий (кричу «Шайбу!»)</option>
+            <option value="Тафгай (защищаю хорошее настроение)">Тафгай (за настроение)</option>
+            <option value="Болельщик VIP-трибуны (душевные разговоры)">VIP-трибуна (разговоры)</option>
+          </select>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <button
+            id="copyReplyBtn"
+            type="button"
+            class="flex-1 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5"
+          >
+            <span>📋</span>
+            <span>Скопировать ответ</span>
+          </button>
+          <button
+            id="downloadIcsBtn"
+            type="button"
+            class="flex-1 py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5"
+          >
+            <span>📅</span>
+            <span>В календарь (.ics)</span>
+          </button>
+        </div>
+        <div id="copyToast" class="hidden text-[11px] font-semibold text-emerald-300"></div>
+      </div>
+    </section>
   </main>
 
-  <!-- Нижняя панель листания -->
-  <footer class="bottom-bar">
-    <button class="btn" id="btnPrev" onclick="navigateSlide(-1)">← Назад</button>
-    <span class="counter" id="slideCounter">Слайд 1 из 14</span>
-    <button class="btn btn-primary" id="btnNext" onclick="navigateSlide(1)">Вперед →</button>
-  </footer>
-
-  <!-- Модальное окно очереди -->
-  <div class="modal-overlay" id="queueModal">
-    <div class="modal-box">
-      <div class="modal-head">
-        <h3 style="font-size:18px; font-weight:700;">Поступившие проекты из зала</h3>
-        <button class="btn" onclick="closeQueueModal()">✕</button>
-      </div>
-      <div class="queue-list" id="queueListContainer">
-        <div style="color: var(--text-muted); text-align: center; padding: 30px 0;">Очередь пока пуста</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Всплывающий тост -->
-  <div class="toast" id="toastMsg"></div>
-
   <script>
-    // КОНФИГУРАЦИЯ СЕССИИ
-    const SESSION_ID = 'rtk_pichugin_live_2026';
-    const SPEAKER_PIN = '1014';
+    (function () {
+      let soundEnabled = true;
+      let audioCtx = null;
 
-    let isSpeaker = false;
-    let currentSlide = 0;
-    let casesQueue = [];
-    let activeProjectedCase = null;
-
-    // Таймер
-    let timerDuration = 300;
-    let timerRemaining = 300;
-    let timerInterval = null;
-    let timerIsRunning = false;
-
-    // СЛАЙДЫ
-    const slidesData = [
-      {
-        tag: "Цифровые регионы",
-        title: "", // Пусто, чтобы не было дубля шапки на титуле
-        render: () => `
-          <div class="hero-center">
-            <span class="tag" style="margin-bottom:12px;">Практика партнерства</span>
-            <h1 class="hero-title">Как говорить с директором филиала на языке P&L</h1>
-            <p class="hero-subtitle">Руководство по совместному управлению ростом бизнеса для заместителя по цифровому региону</p>
-            <div class="speaker-pill">🎙️ Иван Пичугин</div>
-
-            <div style="width:100%; max-width:860px;">
-              <div class="agenda-box-title">Программа сессии</div>
-              <div class="agenda-grid">
-                <div class="agenda-card">
-                  <div class="agenda-num">1</div>
-                  <div class="agenda-text-title">Экономика филиала и Стратегия-2030</div>
-                  <div class="agenda-text-desc">Взгляд директора на бизнес, баланс маржинальности и рисков</div>
-                </div>
-                <div class="agenda-card">
-                  <div class="agenda-num">2</div>
-                  <div class="agenda-text-title">Внешняя повестка и губернатор</div>
-                  <div class="agenda-text-desc">Указ № 1014, рейтинг РЦТ и упаковка решений в One-Pager</div>
-                </div>
-                <div class="agenda-card">
-                  <div class="agenda-num">3</div>
-                  <div class="agenda-text-title">Партнерство и нетворкинг</div>
-                  <div class="agenda-text-desc">Защита от рисков, воронка и выход на площадки региона</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Портрет руководителя",
-        title: "Он отвечает за весь регион, а не за отдельные службы",
-        render: () => `
-          <div class="profile-grid">
-            <div class="summary-card">
-              <div>
-                <div class="stat-badge">
-                  <div class="stat-val">100% P&L</div>
-                  <div class="stat-lbl">Единоличная ответственность за финансовый результат</div>
-                </div>
-                <div class="stat-badge">
-                  <div class="stat-val">100–1200+</div>
-                  <div class="stat-lbl">Сотрудников в контуре ежедневного управления</div>
-                </div>
-              </div>
-              <div style="font-size:13px; color:var(--text-sub); line-height:1.45;">
-                Директор держит в фокусе аварии, безопасность, проверки надзорных органов и выполнение годового бизнес-плана.
-              </div>
-            </div>
-            <div class="profile-list">
-              <div class="profile-row">
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple); text-transform:uppercase;">Школа и опыт</span>
-                <strong style="display:block; margin:4px 0 6px; font-size:15px;">Инженерная база и системный менеджмент</strong>
-                <p style="font-size:13px; color:var(--text-sub);">Возраст 44–56 лет. Программы EMBA или Президентская подготовка. Прошел стройку сетей или корпоративные продажи. Знает реальную себестоимость каждого километра оптики.</p>
-              </div>
-              <div class="profile-row">
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple); text-transform:uppercase;">Управленческий масштаб</span>
-                <strong style="display:block; margin:4px 0 6px; font-size:15px;">Сотни операционных процессов</strong>
-                <p style="font-size:13px; color:var(--text-sub);">Управляет стройкой, эксплуатацией сетей, защитой гостайны, закупками и кадрами. Для него нет изолированных технических задач.</p>
-              </div>
-              <div class="profile-row">
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple); text-transform:uppercase;">Принцип решений</span>
-                <strong style="display:block; margin:4px 0 6px; font-size:15px;">Скорость при подтвержденной безопасности</strong>
-                <p style="font-size:13px; color:var(--text-sub);">Решения принимает быстро, но только если видит прозрачную финансовую окупаемость и отсутствие юридических или кассовых угроз.</p>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Стратегические ориентиры",
-        title: "Рамка корпоративной стратегии 2026–2030 годов",
-        render: () => `
-          <div class="kpi-row">
-            <div class="kpi-box"><div class="kpi-num">> 1 трлн ₽</div><div class="kpi-lbl">выручка всей группы компаний</div></div>
-            <div class="kpi-box"><div class="kpi-num">40%</div><div class="kpi-lbl">доля цифры к 2030 году</div></div>
-            <div class="kpi-box"><div class="kpi-num">+15%</div><div class="kpi-lbl">прирост цифровой выручки в год</div></div>
-            <div class="kpi-box"><div class="kpi-num">37–38%</div><div class="kpi-lbl">норматив по OIBDA margin</div></div>
-          </div>
-          <div class="kpi-insight">
-            <div class="insight-card">
-              <strong style="color:var(--rt-orange); text-transform:uppercase; font-size:12px;">Что это значит для директора</strong>
-              <p style="font-size:14px; color:var(--text-main); margin-top:6px;">Традиционный телеком больше не дает кратного роста. Единственный способ защитить бизнес-план — обеспечить опережающую динамику прикладных цифровых проектов.</p>
-            </div>
-            <div class="insight-card">
-              <strong style="color:var(--rt-purple); text-transform:uppercase; font-size:12px;">В чем роль заместителя</strong>
-              <p style="font-size:14px; color:var(--text-main); margin-top:6px;">Госконтракты — не «социальная нагрузка», а основной канал формирования маржинальной выручки и выполнения личных показателей директора.</p>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Контур управления",
-        title: "Баланс стабильности базового бизнеса и требований роста",
-        render: () => `
-          <div class="three-cols">
-            <div class="col-card">
-              <div>
-                <span style="display:inline-block; font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px; background:#F1F5F9; color:var(--text-sub); margin-bottom:10px;">СТАБИЛЬНОСТЬ</span>
-                <h3 style="font-size:17px; margin-bottom:6px;">Традиционный телеком</h3>
-                <p style="font-size:13px; color:var(--text-sub);">B2C и B2B, ШПД, ТВ и телефония. Формируют базовый денежный поток филиала. Главная задача — удержание базы и контроль оттока.</p>
-              </div>
-              <div style="font-size:12px; font-weight:600; color:var(--text-muted); border-top:1px solid var(--border-card); padding-top:10px; margin-top:12px;">Удержание и оптимизация затрат</div>
-            </div>
-            <div class="col-card">
-              <div>
-                <span style="display:inline-block; font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px; background:#F1F5F9; color:var(--text-sub); margin-bottom:10px;">НАДЕЖНОСТЬ</span>
-                <h3 style="font-size:17px; margin-bottom:6px;">Инфраструктура</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Опорные сети, мобильные вышки, УЦН 2.0, эксплуатация, имущественный комплекс и государственная тайна.</p>
-              </div>
-              <div style="font-size:12px; font-weight:600; color:var(--text-muted); border-top:1px solid var(--border-card); padding-top:10px; margin-top:12px;">Бесперебойность и себестоимость</div>
-            </div>
-            <div class="col-card lead">
-              <div>
-                <span style="display:inline-block; font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px; background:var(--accent-soft-purple); color:var(--rt-purple); margin-bottom:10px;">ТОЧКА РОСТА P&L</span>
-                <h3 style="font-size:17px; margin-bottom:6px;">Цифровой бизнес</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Облака, региональные ИС, ЦОД, кибербезопасность, ИТС и отраслевые решения. Единственный источник кратного роста выручки.</p>
-              </div>
-              <div style="font-size:12px; font-weight:700; color:var(--rt-purple); border-top:1px solid var(--border-card); padding-top:10px; margin-top:12px;">Опережающий рост маржинальной выручки</div>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Переговоры на высшем уровне",
-        title: "Кому продает директор: повестка первого лица региона",
-        render: () => `
-          <div class="three-cols">
-            <div class="col-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">ЭТАП 1. РЕЙТИНГ МИНЦИФРЫ</span>
-                <h3 style="font-size:17px; margin:6px 0;">Рейтинг РЦТ</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Показываем, как региональные платформы и перевод услуг в электронный вид поднимают субъект в зеленую зону федерального мониторинга.</p>
-              </div>
-              <div style="background:#F8FAFC; padding:8px 10px; border-radius:6px; font-size:12px; margin-top:12px;">10 ключевых отраслей и нацпроект</div>
-            </div>
-            <div class="col-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">ЭТАП 2. УКАЗ ПРЕЗИДЕНТА № 1014</span>
-                <h3 style="font-size:17px; margin:6px 0;">Оценка эффективности</h3>
-                <p style="font-size:13px; color:var(--text-sub);">ИТС снижает смертность на дорогах, видеонаблюдение закрывает безопасность, а умный свет повышает индекс качества городской среды.</p>
-              </div>
-              <div style="background:#F8FAFC; padding:8px 10px; border-radius:6px; font-size:12px; margin-top:12px;">Личные показатели губернатора</div>
-            </div>
-            <div class="col-card" style="border:2px solid var(--accent-green); background:#F8FFF9;">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--accent-green);">ЭТАП 3. РЕЗУЛЬТАТ</span>
-                <h3 style="font-size:17px; margin:6px 0;">Запись в протокол</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Директор филиала идет с проектом конкретного поручения министерствам, где заранее прописаны сроки, финансирование и ответственность.</p>
-              </div>
-              <div style="background:#E8F8ED; color:#166534; font-weight:600; padding:8px 10px; border-radius:6px; font-size:12px; margin-top:12px;">Официальное поручение в работу</div>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Экономика решений",
-        title: "Что продает директор: продукты с защищенной доходностью",
-        render: () => `
-          <div class="matrix-grid">
-            <div class="prod-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-orange); text-transform:uppercase;">ТРАНСПОРТ</span>
-                <h3 style="font-size:16px; margin:4px 0 6px;">Интеллектуальные транспортные системы (ИТС)</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Крупные федеральные трансферты, весомый разовый объем выручки и статус ключевого интегратора субъекта.</p>
-              </div>
-              <div style="font-size:12px; color:var(--text-muted); font-weight:600; margin-top:10px;">Федеральный бюджет • Крупный разовый чек</div>
-            </div>
-            <div class="prod-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-orange); text-transform:uppercase;">БЕЗОПАСНОСТЬ</span>
-                <h3 style="font-size:16px; margin:4px 0 6px;">Городское и региональное видеонаблюдение</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Длительный сервисный контракт, стабильные регулярные платежи и надежная база для допродажи аналитики.</p>
-              </div>
-              <div style="font-size:12px; color:var(--text-muted); font-weight:600; margin-top:10px;">Высокий LTV • Защита от оттока</div>
-            </div>
-            <div class="prod-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-orange); text-transform:uppercase;">ИНВЕСТИЦИИ</span>
-                <h3 style="font-size:16px; margin:4px 0 6px;">Энергосервисные контракты (умный свет)</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Модернизация за счет инвестиций компании с возвратом из доказанной экономии казны. Без нагрузки на бюджет сейчас.</p>
-              </div>
-              <div style="font-size:12px; color:var(--text-muted); font-weight:600; margin-top:10px;">Возврат из экономии • Длинная маржа</div>
-            </div>
-            <div class="prod-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-orange); text-transform:uppercase;">ГОССЕКТОР</span>
-                <h3 style="font-size:16px; margin:4px 0 6px;">Связь в образовании (519-рп)</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Статус единственного исполнителя на 2026–2027 годы. Базовый гарантированный доход и плацдарм для допродажи школьного видеонаблюдения.</p>
-              </div>
-              <div style="font-size:12px; color:var(--text-muted); font-weight:600; margin-top:10px;">Гарантия 2026–2027 • База допродаж</div>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Инструмент подготовки",
-        title: "Как подготовить директора: стандарт One-Pager",
-        render: () => `
-          <div class="matrix-grid">
-            <div class="prod-card">
-              <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">БЛОК 1</span>
-              <h3 style="font-size:15px; margin:4px 0;">Польза для первого лица региона</h3>
-              <p style="font-size:12.5px; color:var(--text-sub);">Позиция в рейтинге РЦТ, снижение аварийности, прямая экономия региональной казны.</p>
-              <div style="background:#F8FAFC; padding:6px 8px; border-radius:4px; font-size:11.5px; font-style:italic; margin-top:8px;">«Снижение аварийности на ключевых дорогах на 14%»</div>
-            </div>
-            <div class="prod-card">
-              <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">БЛОК 2</span>
-              <h3 style="font-size:15px; margin:4px 0;">Экономический эффект для филиала</h3>
-              <p style="font-size:12.5px; color:var(--text-sub);">Выручка в горизонте 3 лет, вклад в годовой план по цифре, маржинальность OIBDA и источник средств.</p>
-              <div style="background:#F8FAFC; padding:6px 8px; border-radius:4px; font-size:11.5px; font-style:italic; margin-top:8px;">«Выручка 240 млн руб., вклад +8%, источник: ЛБО Минтранса»</div>
-            </div>
-            <div class="prod-card">
-              <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">БЛОК 3</span>
-              <h3 style="font-size:15px; margin:4px 0;">Текущий статус и узкие места</h3>
-              <p style="font-size:12.5px; color:var(--text-sub);">С кем проведены встречи, кто готовит ТЗ, где требуется личный звонок директора филиала.</p>
-              <div style="background:#F8FAFC; padding:6px 8px; border-radius:4px; font-size:11.5px; font-style:italic; margin-top:8px;">«ТЗ согласовано, требуется звонок директора вице-губернатору»</div>
-            </div>
-            <div class="prod-card">
-              <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">БЛОК 4</span>
-              <h3 style="font-size:15px; margin:4px 0;">Задача на встречу с губернатором</h3>
-              <p style="font-size:12.5px; color:var(--text-sub);">Формулировка поручения в итоговый протокол для профильного министерства.</p>
-              <div style="background:#F8FAFC; padding:6px 8px; border-radius:4px; font-size:11.5px; font-style:italic; margin-top:8px;">«Минтрансу субъекта утвердить план внедрения ИТС до 15 ноября...»</div>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Практикум в зале",
-        title: "Упаковка проекта в формат One-Pager",
-        render: () => `
-          <div class="ws-container">
-            <!-- Таймер (на смартфонах аккуратно сверху) -->
-            <div class="timer-panel">
-              <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:var(--rt-purple);">Тайминг практикума</div>
-              <div class="timer-digits" id="timerDisplay">${formatTimer(timerRemaining)}</div>
-              <div class="timer-status" id="timerStatusLabel">Ожидает старта</div>
-              
-              <div class="timer-controls" id="speakerTimerControls" style="${isSpeaker ? 'display:flex;' : 'display:none;'}">
-                <button class="btn btn-primary" onclick="cmdTimerStart()">Старт</button>
-                <button class="btn" onclick="cmdTimerPause()">Пауза</button>
-                <button class="btn" onclick="cmdTimerReset()">Сброс</button>
-                <button class="btn" onclick="cmdTimerAddMin()">+1 мин</button>
-              </div>
-              <div id="participantTimerHint" style="${!isSpeaker ? 'display:block;' : 'display:none;'} font-size:11.5px; color:var(--text-muted);">
-                Управляется спикером (Иван Пичугин)
-              </div>
-            </div>
-
-            <!-- Правая панель: разбор кейса -->
-            <div id="projectedCaseArea" class="projected-case-banner"></div>
-
-            <!-- Форма участника: плавно листается на смартфоне вниз -->
-            <div class="form-panel" id="normalFormArea">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                <span style="font-size:13px; font-weight:700; color:var(--rt-purple);">ВАШ ПРОЕКТ ИЗ ВОРОНКИ</span>
-                <span style="font-size:11px; color:var(--text-muted);">4 пункта</span>
-              </div>
-              <div class="form-row">
-                <label class="form-label">Ваше имя и регион / филиал *</label>
-                <input class="form-input" id="inpAuthor" placeholder="Например: Сергей, Самарский филиал">
-              </div>
-              <div class="form-row">
-                <label class="form-label">1. Название проекта</label>
-                <input class="form-input" id="inpProject" placeholder="Например: Модернизация освещения (энергосервис)">
-              </div>
-              <div class="form-row">
-                <label class="form-label">2. Показатель губернатора (Указ № 1014 / РЦТ)</label>
-                <input class="form-input" id="inpKpi" placeholder="Какую позицию закрываем: индекс качества городской среды">
-              </div>
-              <div class="form-row">
-                <label class="form-label">3. Экономика филиала (выручка, маржа OIBDA)</label>
-                <input class="form-input" id="inpEconomy" placeholder="Выручка 140 млн руб., OIBDA 38%, возврат из экономии">
-              </div>
-              <div class="form-row">
-                <label class="form-label">4. Поручение в протокол встречи</label>
-                <textarea class="form-textarea" id="inpProtocol" placeholder="Поручить МинЖКХ региона провести оценку энергоэффективности до..."></textarea>
-              </div>
-              <div style="display:flex; gap:10px; margin-top:6px;">
-                <button class="btn btn-orange" style="flex:1; padding:12px;" onclick="submitCaseToSpeaker()">🚀 Отправить на экран спикера</button>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Внутренний диалог",
-        title: "Как мы продаем проект директору филиала",
-        render: () => `
-          <div class="three-cols" style="grid-template-columns:1fr 1fr; gap:16px; margin-bottom:14px;">
-            <div class="col-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">ПОЗИЦИЯ ПРОСИТЕЛЯ</span>
-                <div style="background:#F1F5F9; border-left:3px solid #94A3B8; padding:10px 12px; font-size:13px; font-style:italic; margin:8px 0;">
-                  «С госзаказчиками тяжело работать, не хватает штата, согласуйте дополнительные ставки и бюджет на участие».
-                </div>
-                <p style="font-size:12.5px; color:var(--text-sub); line-height:1.45;">• Рост постоянных операционных затрат<br>• Риск кассового разрыва и заморозки средств<br>• Риски санкций по 44-ФЗ и 223-ФЗ</p>
-              </div>
-              <div style="font-size:11.5px; color:var(--text-muted); border-top:1px solid var(--border-card); padding-top:8px; margin-top:8px;">Реакция: сомнения, рост барьеров и отказ</div>
-            </div>
-            <div class="col-card lead">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple); text-transform:uppercase;">ПОЗИЦИЯ ПАРТНЕРА</span>
-                <div style="background:var(--accent-soft-purple); border-left:3px solid var(--rt-purple); padding:10px 12px; font-size:13px; font-weight:500; margin:8px 0;">
-                  «В работе надежный портфель из 3 контрактов на 3 года. Они принесут +Х млн выручки и закроют треть твоего плана по цифре. Мне нужны переговоры первого лица, исполнение мы забираем на себя».
-                </div>
-                <p style="font-size:12.5px; color:var(--text-sub); line-height:1.45;">• Прямой вклад в личные KPI директора<br>• Защищенная маржинальность OIBDA<br>• Полный контроль технологических рисков</p>
-              </div>
-              <div style="font-size:11.5px; color:var(--rt-purple); font-weight:600; border-top:1px solid var(--border-card); padding-top:8px; margin-top:8px;">Реакция: понимание личной выгоды и поддержка</div>
-            </div>
-          </div>
-          <div style="background:#FFFFFF; border:1px solid var(--border-card); border-radius:var(--radius-sm); padding:14px 18px; font-size:13.5px; display:flex; align-items:center; gap:10px;">
-            <span>💡</span>
-            <span><strong>Вопрос для самооценки:</strong> вспомните ваш последний разговор с директором — из какой роли вы заходили и что в питче стоит изменить прямо в понедельник?</span>
-          </div>
-        `
-      },
-      {
-        tag: "Управление рисками",
-        title: "Как директор принимает решения и чего он ждет",
-        render: () => `
-          <div class="three-cols" style="margin-bottom:14px;">
-            <div class="col-card">
-              <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">ФИНАНСЫ</span>
-              <h3 style="font-size:16px; margin:4px 0 6px;">Проработка рисков</h3>
-              <p style="font-size:12.5px; color:var(--text-sub);">Сквозной расчет финмодели без скрытых затрат, подтвержденные лимиты бюджетных обязательств или защита от кассовых разрывов.</p>
-              <div style="background:#F8FAFC; padding:6px 8px; border-radius:4px; font-size:11.5px; color:var(--text-muted); margin-top:8px;">Без «деньги найдем позже»</div>
-            </div>
-            <div class="col-card">
-              <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">ПРОИЗВОДСТВО</span>
-              <h3 style="font-size:16px; margin:4px 0 6px;">Структура исполнения</h3>
-              <p style="font-size:12.5px; color:var(--text-sub);">Проверенный пул субподрядчиков, контроль поставок оборудования и соблюдение технологических окон сдачи в срок.</p>
-              <div style="background:#F8FAFC; padding:6px 8px; border-radius:4px; font-size:11.5px; color:var(--text-muted); margin-top:8px;">Жесткий операционный контроль</div>
-            </div>
-            <div class="col-card">
-              <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">БЕЗОПАСНОСТЬ</span>
-              <h3 style="font-size:16px; margin:4px 0 6px;">Юридическая чистота</h3>
-              <p style="font-size:12.5px; color:var(--text-sub);">Типовые решения и документация, уже прошедшие проверки ФАС и надзорных органов в других регионах страны.</p>
-              <div style="background:#F8FAFC; padding:6px 8px; border-radius:4px; font-size:11.5px; color:var(--text-muted); margin-top:8px;">Нулевой риск предписаний ФАС</div>
-            </div>
-          </div>
-          <div style="background:#FFFFFF; border:1px solid var(--border-card); border-radius:var(--radius-md); padding:14px 20px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-            <div style="font-size:13px;"><strong style="color:var(--rt-purple);">Задача заместителя:</strong> формировать надежную воронку, считать экономику и модерировать каждый этап сделки.</div>
-            <div style="font-size:13px;"><strong style="color:var(--text-main);">Роль директора:</strong> подключать административный статус, вести диалог с первыми лицами и защищать проект на уровне субъекта.</div>
-          </div>
-        `
-      },
-      {
-        tag: "Региональная повестка",
-        title: "Внешнее окружение: выводим директора на ключевые площадки",
-        render: () => `
-          <div class="three-cols" style="grid-template-columns:1fr 1fr; gap:16px;">
-            <div class="col-card">
-              <h3 style="font-size:17px; margin-bottom:10px;">Институциональные площадки</h3>
-              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--text-sub);">
-                <li>• Общественная палата субъекта РФ и экспертные группы</li>
-                <li>• Наблюдательные советы ведущих региональных вузов</li>
-                <li>• Общественные советы при силовых ведомствах (МВД, МЧС)</li>
-                <li>• Союзы промышленников, предпринимателей и строителей</li>
-                <li>• Ключевые деловые и спортивные форумы субъекта</li>
-              </ul>
-              <div style="font-size:11.5px; color:var(--text-muted); border-top:1px solid var(--border-card); padding-top:10px; margin-top:10px;">Задача зама: инициировать и готовить участие первого лица</div>
-            </div>
-            <div class="col-card">
-              <h3 style="font-size:17px; margin-bottom:10px;">Карта стейкхолдеров субъекта</h3>
-              <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--text-sub);">
-                <li>• Губернатор и ключевые замы по внутренней политике и экономике</li>
-                <li>• Профильные министры: цифра, транспорт, образование, медицина, ЖКХ</li>
-                <li>• Мэр регионального центра и главы промышленных городов</li>
-                <li>• Руководство управлений МВД, ФСБ, МЧС и Ростехнадзора</li>
-                <li>• Главы профильных комитетов законодательного собрания</li>
-              </ul>
-              <div style="font-size:11.5px; color:var(--text-muted); border-top:1px solid var(--border-card); padding-top:10px; margin-top:10px;">Личный контакт директора со всей линейкой ЛПР</div>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Итог",
-        title: "Формула совместного лидерства в регионе",
-        render: () => `
-          <div style="background:#FFFFFF; border:2px solid var(--rt-purple); border-radius:var(--radius-md); padding:18px 24px; display:flex; justify-content:space-around; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
-            <div style="text-align:center;"><div style="font-size:17px; font-weight:700;">Политический вес</div><div style="font-size:12px; color:var(--text-muted);">директора филиала</div></div>
-            <div style="font-size:24px; font-weight:700; color:var(--rt-purple);">+</div>
-            <div style="text-align:center;"><div style="font-size:17px; font-weight:700;">Управляемый портфель</div><div style="font-size:12px; color:var(--text-muted);">заместителя по цифре</div></div>
-            <div style="font-size:24px; font-weight:700; color:var(--rt-purple);">=</div>
-            <div style="text-align:center;"><div style="font-size:17px; font-weight:700;">Лидерство в регионе</div><div style="font-size:12px; color:var(--text-muted);">выполнение бизнес-плана</div></div>
-          </div>
-          <div class="three-cols">
-            <div class="col-card">
-              <div style="font-size:22px; font-weight:700; color:var(--rt-purple); margin-bottom:6px;">01</div>
-              <h4 style="font-size:15px; margin-bottom:4px;">Сценарии вместо проблем</h4>
-              <p style="font-size:12.5px; color:var(--text-sub);">Приходите к директору не с констатацией сложностей, а с готовыми решениями и расчетом рисков.</p>
-            </div>
-            <div class="col-card">
-              <div style="font-size:22px; font-weight:700; color:var(--rt-purple); margin-bottom:6px;">02</div>
-              <h4 style="font-size:15px; margin-bottom:4px;">Знание региональной казны</h4>
-              <p style="font-size:12.5px; color:var(--text-sub);">Знайте бюджет и слабые места региона в рейтингах лучше профильного министра.</p>
-            </div>
-            <div class="col-card">
-              <div style="font-size:22px; font-weight:700; color:var(--rt-purple); margin-bottom:6px;">03</div>
-              <h4 style="font-size:15px; margin-bottom:4px;">Победа первого лица</h4>
-              <p style="font-size:12.5px; color:var(--text-sub);">Помогайте директору филиала становиться главным проводником цифровых побед региона.</p>
-            </div>
-          </div>
-        `
-      },
-      {
-        tag: "Приложение 1",
-        title: "Матрица быстрой проверки проекта перед согласованием",
-        render: () => `
-          <div style="background:#FFFFFF; border:1px solid var(--border-card); border-radius:var(--radius-md); overflow-x:auto;">
-            <table style="width:100%; border-collapse:collapse; font-size:12.5px; min-width:600px;">
-              <tr style="background:#F8FAFC; text-align:left; border-bottom:1px solid var(--border-card);">
-                <th style="padding:12px 16px;">КРИТЕРИЙ</th>
-                <th style="padding:12px 16px; color:#15803D;">ЗЕЛЕНАЯ ЗОНА: ИДЕМ НА ЗАЩИТУ</th>
-                <th style="padding:12px 16px; color:#B91C1C;">КРАСНАЯ ЗОНА: ДОРАБАТЫВАЕМ ВНУТРИ</th>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border-card);">
-                <td style="padding:12px 16px; font-weight:600;">Финансирование</td>
-                <td style="padding:12px 16px; background:#F0FDF4; color:#15803D;">Подтверждено лимитами ЛБО либо доказанной экономией затрат</td>
-                <td style="padding:12px 16px; background:#FEF2F2; color:#B91C1C;">Средства обещали изыскать при корректировке бюджета во 2 полугодии</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border-card);">
-                <td style="padding:12px 16px; font-weight:600;">Сроки реализации</td>
-                <td style="padding:12px 16px; background:#F0FDF4; color:#15803D;">Технологические окна достаточны для поставки и пусконаладки</td>
-                <td style="padding:12px 16px; background:#FEF2F2; color:#B91C1C;">Сдача 25 декабря при отсутствии утвержденного ТЗ в сентябре</td>
-              </tr>
-              <tr style="border-bottom:1px solid var(--border-card);">
-                <td style="padding:12px 16px; font-weight:600;">Рентабельность</td>
-                <td style="padding:12px 16px; background:#F0FDF4; color:#15803D;">Проект укладывается в норматив филиала по OIBDA margin</td>
-                <td style="padding:12px 16px; background:#FEF2F2; color:#B91C1C;">Показатели занижены в расчете на будущие допродажи сервисов</td>
-              </tr>
-              <tr>
-                <td style="padding:12px 16px; font-weight:600;">Инфраструктура</td>
-                <td style="padding:12px 16px; background:#F0FDF4; color:#15803D;">Максимально задействованы свои оптические сети и мощности ЦОД</td>
-                <td style="padding:12px 16px; background:#FEF2F2; color:#B91C1C;">100% перепродажа стороннего решения без добавленной цены оператора</td>
-              </tr>
-            </table>
-          </div>
-        `
-      },
-      {
-        tag: "Приложение 2",
-        title: "Регламент взаимодействия: график встреч с директором филиала",
-        render: () => `
-          <div class="three-cols">
-            <div class="col-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">ЕЖЕНЕДЕЛЬНО • 15 МИН</span>
-                <h3 style="font-size:17px; margin:6px 0;">Оперативный статус</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Контроль движения сделок в воронке и оперативные развилки, где требуется звонок или письмо первого лица.</p>
-              </div>
-              <div style="background:#F8FAFC; padding:8px 10px; border-radius:6px; font-size:12px; margin-top:12px;">Фокус: ТОП-5 контрактов и снятие стоп-факторов</div>
-            </div>
-            <div class="col-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">ЕЖЕМЕСЯЧНО • 45 МИН</span>
-                <h3 style="font-size:17px; margin:6px 0;">Финансовый контур</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Анализ исполнения P&L по цифровому блоку, закрытие актов, контроль оплат и предотвращение кассовых разрывов.</p>
-              </div>
-              <div style="background:#F8FAFC; padding:8px 10px; border-radius:6px; font-size:12px; margin-top:12px;">Фокус: факт плана и платежная дисциплина</div>
-            </div>
-            <div class="col-card">
-              <div>
-                <span style="font-size:11px; font-weight:700; color:var(--rt-purple);">ЕЖЕКВАРТАЛЬНО • 2 ЧАСА</span>
-                <h3 style="font-size:17px; margin:6px 0;">Стратегическая сессия</h3>
-                <p style="font-size:13px; color:var(--text-sub);">Синхронизация долгосрочных инициатив с бюджетным циклом региона за полгода до внесения закона о бюджете.</p>
-              </div>
-              <div style="background:#F8FAFC; padding:8px 10px; border-radius:6px; font-size:12px; margin-top:12px;">Фокус: закладка проектов в бюджет региона</div>
-            </div>
-          </div>
-        `
-      }
-    ];
-
-    // РЕНДЕР СЛАЙДА БЕЗ ДУБЛИРОВАНИЯ ЗАГОЛОВКА НА ТИТУЛЕ
-    function renderCurrentSlide() {
-      const slide = slidesData[currentSlide];
-      const container = document.getElementById('slideFrame');
-      
-      if (currentSlide === 0) {
-        // На титуле только чистый центрированный контент
-        container.innerHTML = `<div class="slide-content">${slide.render()}</div>`;
-      } else {
-        container.innerHTML = `
-          <div class="header-group">
-            <span class="tag">${slide.tag}</span>
-            <h2 class="slide-title">${slide.title}</h2>
-          </div>
-          <div class="slide-content">${slide.render()}</div>
-        `;
-      }
-
-      document.getElementById('slideCounter').textContent = `Слайд ${currentSlide + 1} из ${slidesData.length}`;
-
-      if (currentSlide === 7 && activeProjectedCase) {
-        showProjectedCaseOnScreen(activeProjectedCase);
-      }
-      
-      // Скроллим наверх при смене слайда на смартфонах
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      container.scrollTop = 0;
-    }
-
-    // ЛИСТАНИЕ
-    function navigateSlide(dir) {
-      const next = currentSlide + dir;
-      if (next >= 0 && next < slidesData.length) {
-        currentSlide = next;
-        renderCurrentSlide();
-        if (isSpeaker) {
-          sendNetworkMessage({ type: 'GOTO_SLIDE', slideIndex: currentSlide });
+      function getAudioCtx() {
+        if (!audioCtx) {
+          const Ctx = window.AudioContext || window.webkitAudioContext;
+          if (Ctx) audioCtx = new Ctx();
         }
-      }
-    }
-
-    // ТАЙМЕР
-    function formatTimer(sec) {
-      const m = Math.floor(sec / 60);
-      const s = sec % 60;
-      return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    }
-
-    function updateTimerUI() {
-      const el = document.getElementById('timerDisplay');
-      if (el) el.textContent = formatTimer(timerRemaining);
-    }
-
-    function cmdTimerStart() {
-      if (!isSpeaker) return;
-      sendNetworkMessage({ type: 'TIMER_CMD', cmd: 'START', duration: timerRemaining });
-      runTimerLocal();
-    }
-    function cmdTimerPause() {
-      if (!isSpeaker) return;
-      sendNetworkMessage({ type: 'TIMER_CMD', cmd: 'PAUSE', remaining: timerRemaining });
-      pauseTimerLocal();
-    }
-    function cmdTimerReset() {
-      if (!isSpeaker) return;
-      sendNetworkMessage({ type: 'TIMER_CMD', cmd: 'RESET', duration: 300 });
-      resetTimerLocal(300);
-    }
-    function cmdTimerAddMin() {
-      if (!isSpeaker) return;
-      const nw = timerRemaining + 60;
-      sendNetworkMessage({ type: 'TIMER_CMD', cmd: 'ADD', remaining: nw });
-      timerRemaining = nw;
-      updateTimerUI();
-    }
-
-    function runTimerLocal() {
-      clearInterval(timerInterval);
-      timerIsRunning = true;
-      const lbl = document.getElementById('timerStatusLabel');
-      if (lbl) lbl.textContent = '🟢 Идет обратный отсчет...';
-      timerInterval = setInterval(() => {
-        if (timerRemaining > 0) {
-          timerRemaining--;
-          updateTimerUI();
-        } else {
-          clearInterval(timerInterval);
-          timerIsRunning = false;
-          if (lbl) lbl.textContent = '🔔 Время вышло!';
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
         }
-      }, 1000);
-    }
-
-    function pauseTimerLocal() {
-      clearInterval(timerInterval);
-      timerIsRunning = false;
-      const lbl = document.getElementById('timerStatusLabel');
-      if (lbl) lbl.textContent = '⏸ Пауза';
-    }
-
-    function resetTimerLocal(sec) {
-      clearInterval(timerInterval);
-      timerIsRunning = false;
-      timerRemaining = sec;
-      updateTimerUI();
-      const lbl = document.getElementById('timerStatusLabel');
-      if (lbl) lbl.textContent = 'Ожидает старта';
-    }
-
-    // ОТПРАВКА КЕЙСА
-    function submitCaseToSpeaker() {
-      const author = document.getElementById('inpAuthor')?.value.trim();
-      const project = document.getElementById('inpProject')?.value.trim();
-      const kpi = document.getElementById('inpKpi')?.value.trim();
-      const economy = document.getElementById('inpEconomy')?.value.trim();
-      const protocol = document.getElementById('inpProtocol')?.value.trim();
-
-      if (!author) {
-        alert('Пожалуйста, укажите ваше имя и регион / филиал');
-        return;
+        return audioCtx;
       }
 
-      const caseData = {
-        id: 'c_' + Date.now(),
-        author: author,
-        project: project || 'Без названия',
-        kpi: kpi || 'Не указан',
-        economy: economy || 'Не указана',
-        protocol: protocol || 'Не заполнено',
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
+      function playWhistle() {
+        if (!soundEnabled) return;
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const lfo = ctx.createOscillator();
+        const lfoGain = ctx.createGain();
+        const gain = ctx.createGain();
 
-      sendNetworkMessage({ type: 'NEW_CASE', caseData });
-      showToast('✅ Кейс успешно отправлен на экран Ивана!');
-    }
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(2750, now);
+        lfo.frequency.setValueAtTime(38, now);
+        lfoGain.gain.setValueAtTime(140, now);
 
-    function showProjectedCaseOnScreen(data) {
-      activeProjectedCase = data;
-      const banner = document.getElementById('projectedCaseArea');
-      const form = document.getElementById('normalFormArea');
-      if (!banner) return;
+        lfo.connect(lfoGain);
+        lfoGain.connect(osc.frequency);
 
-      banner.style.display = 'flex';
-      if (form) form.style.display = 'none';
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.exponentialRampToValueAtTime(0.12, now + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.36);
 
-      banner.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-card); padding-bottom:10px;">
-          <div>
-            <span style="font-size:11px; font-weight:700; color:var(--rt-purple); text-transform:uppercase;">КЕЙС НА ЭКРАНЕ</span>
-            <h3 style="font-size:18px; color:var(--text-main); margin-top:2px;">${data.project}</h3>
-            <div style="font-size:12.5px; color:var(--rt-orange); font-weight:600;">Автор: ${data.author} (${data.time})</div>
-          </div>
-          ${isSpeaker ? `<button class="btn" onclick="clearProjectedCase()">✕ Снять</button>` : ''}
-        </div>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div style="background:#F8FAFC; padding:12px; border-radius:6px;">
-            <div style="font-size:11px; font-weight:700; color:var(--rt-purple);">ПОКАЗАТЕЛЬ ГУБЕРНАТОРА</div>
-            <div style="font-size:13.5px; margin-top:4px;">${data.kpi}</div>
-          </div>
-          <div style="background:#F8FAFC; padding:12px; border-radius:6px;">
-            <div style="font-size:11px; font-weight:700; color:var(--rt-purple);">ЭКОНОМИКА ФИЛИАЛА</div>
-            <div style="font-size:13.5px; margin-top:4px;">${data.economy}</div>
-          </div>
-          <div style="background:#FAF8FF; border-left:3px solid var(--rt-purple); padding:12px; border-radius:4px;">
-            <div style="font-size:11px; font-weight:700; color:var(--rt-purple);">ПОРУЧЕНИЕ В ПРОТОКОЛ</div>
-            <div style="font-size:13.5px; margin-top:4px; font-weight:500;">${data.protocol}</div>
-          </div>
-        </div>
-      `;
-    }
-
-    function clearProjectedCase() {
-      activeProjectedCase = null;
-      const banner = document.getElementById('projectedCaseArea');
-      const form = document.getElementById('normalFormArea');
-      if (banner) banner.style.display = 'none';
-      if (form) form.style.display = 'flex';
-      if (isSpeaker) {
-        sendNetworkMessage({ type: 'CLEAR_CASE' });
-      }
-    }
-
-    // ОЧЕРЕДЬ
-    function openQueueModal() {
-      const container = document.getElementById('queueListContainer');
-      if (!casesQueue.length) {
-        container.innerHTML = '<div style="color:var(--text-muted); text-align:center; padding:30px 0;">Очередь пока пуста</div>';
-      } else {
-        container.innerHTML = casesQueue.map((item, idx) => `
-          <div class="queue-item">
-            <div>
-              <strong style="font-size:14px;">${item.project}</strong>
-              <div style="font-size:12px; color:var(--text-sub);">${item.author} • ${item.time}</div>
-            </div>
-            <button class="btn btn-primary" onclick="projectCaseByIndex(${idx})">Вывести</button>
-          </div>
-        `).join('');
-      }
-      document.getElementById('queueModal').style.display = 'flex';
-    }
-
-    function closeQueueModal() {
-      document.getElementById('queueModal').style.display = 'none';
-    }
-
-    function projectCaseByIndex(idx) {
-      const item = casesQueue[idx];
-      closeQueueModal();
-      currentSlide = 7;
-      renderCurrentSlide();
-      showProjectedCaseOnScreen(item);
-      sendNetworkMessage({ type: 'GOTO_SLIDE', slideIndex: 7 });
-      sendNetworkMessage({ type: 'PROJECT_CASE', caseData: item });
-    }
-
-    function updateQueueCounter() {
-      const badge = document.getElementById('btnQueue');
-      const counter = document.getElementById('queueCounter');
-      if (isSpeaker) {
-        badge.style.display = 'inline-flex';
-        counter.textContent = `(${casesQueue.length})`;
-      }
-    }
-
-    // АВТОРИЗАЦИЯ СПИКЕРА
-    function promptAuth() {
-      if (isSpeaker) {
-        alert('Вы уже авторизованы как спикер (Иван Пичугин)');
-        return;
-      }
-      const pin = prompt('Введите ПИН-код спикера:');
-      if (pin === SPEAKER_PIN) {
-        setSpeakerMode();
-      } else if (pin !== null) {
-        alert('Неверный ПИН-код');
-      }
-    }
-
-    function setSpeakerMode() {
-      isSpeaker = true;
-      document.getElementById('roleBadge').className = 'status-badge speaker';
-      document.getElementById('roleText').textContent = '🎙️ Спикер: Иван';
-      document.getElementById('authIcon').textContent = '✓';
-      document.getElementById('authText').textContent = 'Иван';
-      updateQueueCounter();
-      renderCurrentSlide();
-      showToast('Добро пожаловать, Иван! Управление презентацией активно.');
-    }
-
-    function showToast(text) {
-      const t = document.getElementById('toastMsg');
-      t.textContent = text;
-      t.style.display = 'block';
-      setTimeout(() => { t.style.display = 'none'; }, 3500);
-    }
-
-    // -------------------------------------------------------------
-    // СЕТЕВОЙ ШЛЮЗ С УСТОЙЧИВЫМ ПОДКЛЮЧЕНИЕМ И FALLBACK ДЛЯ КОРП. СЕТИ
-    // -------------------------------------------------------------
-    const myClientId = 'u_' + Math.random().toString(36).substring(2, 9);
-    const localBroadcast = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel(SESSION_ID) : null;
-    const handledMsgIds = new Set();
-    let isConnectedOnline = false;
-
-    function sendNetworkMessage(payload) {
-      payload.sender = myClientId;
-      payload.msgId = myClientId + '_' + Date.now() + '_' + Math.random();
-
-      if (localBroadcast) {
-        localBroadcast.postMessage(payload);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        lfo.start(now);
+        osc.stop(now + 0.38);
+        lfo.stop(now + 0.38);
       }
 
-      fetch(`https://ntfy.sh/${SESSION_ID}`, {
-        method: 'POST',
-        headers: { 'Title': 'RTK_SYNC' },
-        body: JSON.stringify(payload)
-      }).catch(() => {});
-    }
-
-    function handleIncomingMessage(msg) {
-      if (!msg || msg.sender === myClientId || handledMsgIds.has(msg.msgId)) return;
-      handledMsgIds.add(msg.msgId);
-
-      if (msg.type === 'GOTO_SLIDE' && !isSpeaker) {
-        currentSlide = msg.slideIndex;
-        renderCurrentSlide();
+      function playGoalHorn() {
+        if (!soundEnabled) return;
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        [146.83, 185.0, 220.0].forEach((freq) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.exponentialRampToValueAtTime(0.06, now + 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.05, now + 0.55);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.75);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.78);
+        });
       }
 
-      if (msg.type === 'TIMER_CMD') {
-        if (msg.cmd === 'START') {
-          timerRemaining = msg.duration;
-          runTimerLocal();
-        } else if (msg.cmd === 'PAUSE') {
-          timerRemaining = msg.remaining;
-          pauseTimerLocal();
-        } else if (msg.cmd === 'RESET') {
-          resetTimerLocal(msg.duration);
-        } else if (msg.cmd === 'ADD') {
-          timerRemaining = msg.remaining;
-          updateTimerUI();
-        }
-      }
-
-      if (msg.type === 'NEW_CASE') {
-        casesQueue.push(msg.caseData);
-        updateQueueCounter();
-        if (isSpeaker) {
-          showToast(`📩 Новый проект от: ${msg.caseData.author}`);
-        }
-      }
-
-      if (msg.type === 'PROJECT_CASE' && !isSpeaker) {
-        currentSlide = 7;
-        renderCurrentSlide();
-        showProjectedCaseOnScreen(msg.caseData);
-      }
-
-      if (msg.type === 'CLEAR_CASE' && !isSpeaker) {
-        clearProjectedCase();
-      }
-    }
-
-    function initNetwork() {
-      if (localBroadcast) {
-        localBroadcast.onmessage = (e) => handleIncomingMessage(e.data);
-      }
-
-      // Таймаут безопасности: если корпоративная сеть блокирует постоянный SSE-стрим,
-      // мы не зависаем в бесконечном «Подключение...»
-      const connectionTimer = setTimeout(() => {
-        if (!isConnectedOnline) {
-          if (!isSpeaker) {
-            document.getElementById('roleText').textContent = '📱 Режим участника';
-          }
-          startPollingFallback();
-        }
-      }, 3500);
-
-      try {
-        const es = new EventSource(`https://ntfy.sh/${SESSION_ID}/sse`);
-        es.onopen = () => {
-          isConnectedOnline = true;
-          clearTimeout(connectionTimer);
-          if (!isSpeaker) {
-            document.getElementById('roleText').textContent = '📱 В эфире (онлайн)';
-          }
-        };
-        es.onmessage = (e) => {
-          try {
-            const raw = JSON.parse(e.data);
-            if (raw.event === 'message') {
-              const parsed = JSON.parse(raw.message);
-              handleIncomingMessage(parsed);
-            }
-          } catch(err) {}
-        };
-        es.onerror = () => {
-          if (!isSpeaker && !isConnectedOnline) {
-            document.getElementById('roleText').textContent = '📱 Режим участника';
-          }
-          startPollingFallback();
-        };
-      } catch(e) {
-        startPollingFallback();
-      }
-    }
-
-    // Резервный опрос для строгих сетей
-    let pollingStarted = false;
-    function startPollingFallback() {
-      if (pollingStarted) return;
-      pollingStarted = true;
-      setInterval(() => {
-        fetch(`https://ntfy.sh/${SESSION_ID}/json?poll=1&since=3s`)
-          .then(res => res.text())
-          .then(text => {
-            const lines = text.trim().split('\n');
-            lines.forEach(line => {
-              try {
-                const item = JSON.parse(line);
-                if (item.event === 'message') {
-                  handleIncomingMessage(JSON.parse(item.message));
-                }
-              } catch(e) {}
-            });
-          }).catch(() => {});
-      }, 2500);
-    }
-
-    // Инициализация при старте и свайп-навигация
-    window.addEventListener('DOMContentLoaded', () => {
-      initNetwork();
-
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('pin') === SPEAKER_PIN) {
-        setSpeakerMode();
-      }
-
-      renderCurrentSlide();
-
-      // Клавиатурное листание
-      window.addEventListener('keydown', (e) => {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-        if (e.key === 'ArrowRight' || e.key === ' ') navigateSlide(1);
-        if (e.key === 'ArrowLeft') navigateSlide(-1);
+      const soundToggleBtn = document.getElementById('soundToggleBtn');
+      const soundIcon = document.getElementById('soundIcon');
+      const soundLabel = document.getElementById('soundLabel');
+      soundToggleBtn.addEventListener('click', () => {
+        soundEnabled = !soundEnabled;
+        soundIcon.textContent = soundEnabled ? '🔊' : '🔇';
+        soundLabel.textContent = soundEnabled ? 'Звук: вкл' : 'Звук: выкл';
       });
 
-      // Сенсорная свайп-навигация для смартфонов
-      let touchStartX = 0;
-      let touchEndX = 0;
-      const frame = document.getElementById('slideFrame');
-
-      frame.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
-
-      frame.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      }, { passive: true });
-
-      function handleSwipe() {
-        // Игнорируем свайп внутри формы и полей ввода
-        const activeTag = document.activeElement ? document.activeElement.tagName : '';
-        if (activeTag === 'INPUT' || activeTag === 'TEXTAREA') return;
-
-        const diff = touchEndX - touchStartX;
-        if (Math.abs(diff) > 55) {
-          if (diff < 0) navigateSlide(1);  // Свайп влево -> следующий
-          else navigateSlide(-1);          // Свайп вправо -> предыдущий
+      const targetTime = new Date('2026-12-03T19:00:00+05:00').getTime();
+      function updateCountdown() {
+        const diff = targetTime - Date.now();
+        if (diff <= 0) {
+          document.getElementById('cdDays').textContent = '0';
+          document.getElementById('cdHours').textContent = '0';
+          document.getElementById('cdMins').textContent = '0';
+          document.getElementById('cdSecs').textContent = '0';
+          return;
         }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+        document.getElementById('cdDays').textContent = String(days);
+        document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cdMins').textContent = String(mins).padStart(2, '0');
+        document.getElementById('cdSecs').textContent = String(secs).padStart(2, '0');
       }
-    });
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      const verdicts = [
+        {
+          badge: 'ПРОБРОС (ICING)',
+          badgeClass: 'bg-red-500/20 text-red-300 border border-red-500/40',
+          boxClass: 'bg-red-950/40 border-red-500/40',
+          title: 'Отклонено судейской коллегией!',
+          msg: 'Зафиксирован умышленный проброс. Отказ от празднования ДР (перенесённого с 18 ноября на дерби!) не засчитан — смена состава запрещена.',
+          penalty: 2,
+          btnText: 'Всё равно не могу...'
+        },
+        {
+          badge: 'МАЛЫЙ ШТРАФ • 2 МИН',
+          badgeClass: 'bg-amber-500/20 text-amber-300 border border-amber-500/40',
+          boxClass: 'bg-amber-950/35 border-amber-500/40',
+          title: 'Удаление за симуляцию!',
+          msg: 'Видеоповтор КХЛ показал: уважительной причины нет, чистый нырок (diving). Отправляйся на скамейку штрафников и жми «Точно буду»!',
+          penalty: 2,
+          btnText: 'Прошу тренерский запрос!'
+        },
+        {
+          badge: 'ВНЕ ИГРЫ (OFFSIDE)',
+          badgeClass: 'bg-sky-500/20 text-sky-300 border border-sky-500/40',
+          boxClass: 'bg-sky-950/35 border-sky-500/40',
+          title: 'Положение «вне игры»!',
+          msg: 'Вы пересекли синюю линию раньше шайбы. Отказаться от дерби «Автомобилист — Трактор» в компании Ивана невозможно по регламенту.',
+          penalty: 5,
+          btnText: 'А если в овертайме?'
+        },
+        {
+          badge: 'COACH’S CHALLENGE',
+          badgeClass: 'bg-purple-500/20 text-purple-300 border border-purple-500/40',
+          boxClass: 'bg-purple-950/35 border-purple-500/40',
+          title: 'Запрос тренера отклонён!',
+          msg: 'Именинник Иван Пичугин посмотрел повтор на планшете: твоё участие в ложе — чистый гол без помехи вратарю!',
+          penalty: 10,
+          btnText: 'Сдаюсь... или нет?'
+        },
+        {
+          badge: 'МАТЧ-ШТРАФ',
+          badgeClass: 'bg-red-600/30 text-red-200 border border-red-500/60',
+          boxClass: 'bg-red-950/60 border-red-500/60',
+          title: 'Кнопка «Нет» удалена до конца игры!',
+          msg: 'Отказ аннулирован дисциплинарным комитетом. Остался единственный легальный манёвр — выходить на лёд!',
+          penalty: 20,
+          btnText: 'Ладно, выхожу на лёд! 🏒'
+        }
+      ];
+
+      let declineClicks = 0;
+      let totalPenalty = 0;
+
+      const btnAccept = document.getElementById('btnAccept');
+      const btnDecline = document.getElementById('btnDecline');
+      const declineBtnText = document.getElementById('declineBtnText');
+      const refereeBox = document.getElementById('refereeBox');
+      const refBadge = document.getElementById('refBadge');
+      const refTitle = document.getElementById('refTitle');
+      const refMessage = document.getElementById('refMessage');
+      const attemptCounterBadge = document.getElementById('attemptCounterBadge');
+      const penaltyMinutes = document.getElementById('penaltyMinutes');
+      const rsvpButtons = document.getElementById('rsvpButtons');
+      const confirmedCard = document.getElementById('confirmedCard');
+
+      function acceptInvite() {
+        playGoalHorn();
+        refereeBox.classList.add('hidden');
+        rsvpButtons.classList.add('hidden');
+        confirmedCard.classList.remove('hidden');
+        launchConfetti();
+      }
+
+      btnAccept.addEventListener('click', acceptInvite);
+
+      btnDecline.addEventListener('click', () => {
+        if (declineClicks >= verdicts.length) {
+          acceptInvite();
+          return;
+        }
+        playWhistle();
+        const v = verdicts[declineClicks];
+        declineClicks += 1;
+        totalPenalty += v.penalty;
+
+        attemptCounterBadge.classList.remove('hidden');
+        penaltyMinutes.textContent = String(totalPenalty);
+
+        refereeBox.className = 'rounded-xl border p-3 sm:p-3.5 space-y-1 transition-all animate-shake ' + v.boxClass;
+        refBadge.className = 'px-2 py-0.5 rounded ' + v.badgeClass;
+        refBadge.textContent = v.badge;
+        refTitle.textContent = v.title;
+        refMessage.textContent = v.msg;
+
+        declineBtnText.textContent = v.btnText;
+        if (declineClicks === verdicts.length) {
+          btnDecline.className = 'sm:w-auto py-3 sm:py-3.5 px-4 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/50 text-emerald-200 font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5';
+        }
+      });
+
+      document.getElementById('resetRsvpBtn').addEventListener('click', () => {
+        confirmedCard.classList.add('hidden');
+        rsvpButtons.classList.remove('hidden');
+      });
+
+      document.getElementById('copyReplyBtn').addEventListener('click', () => {
+        const name = document.getElementById('guestNameInput').value.trim();
+        const role = document.getElementById('guestRoleSelect').value;
+        const prefix = name ? `Иван, привет! Это ${name}. ` : 'Иван, привет! ';
+        const text = `${prefix}Заявка в состав принята — точно буду 3 декабря в 19:00 на «УГМК-Арене» (сбор в 14 ложе, Автомобилист — Трактор). Амплуа: ${role}. Готовлю связки для «Шайбу!» 🏒`;
+
+        const toast = document.getElementById('copyToast');
+        const showToast = (msg) => {
+          toast.textContent = msg;
+          toast.classList.remove('hidden');
+          setTimeout(() => toast.classList.add('hidden'), 3200);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(
+            () => showToast('Ответ скопирован — можно отправлять Ивану!'),
+            () => fallbackCopy(text, showToast)
+          );
+        } else {
+          fallbackCopy(text, showToast);
+        }
+      });
+
+      function fallbackCopy(text, cb) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          cb('Ответ скопирован — можно отправлять Ивану!');
+        } catch (e) {
+          cb('Не удалось скопировать — выделите текст вручную.');
+        }
+        document.body.removeChild(ta);
+      }
+
+      document.getElementById('downloadIcsBtn').addEventListener('click', () => {
+        const ics = [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Ivan Pichugin Birthday//KHL Derby//RU',
+          'BEGIN:VEVENT',
+          'UID:ivan-birthday-2026-12-03@ugmk-arena',
+          'DTSTAMP:20261119T090000Z',
+          'DTSTART:20261203T140000Z',
+          'DTEND:20261203T170000Z',
+          'SUMMARY:День рождения Ивана Пичугина — Автомобилист vs Трактор',
+          'LOCATION:УГМК-Арена (VIP-ложа №14), г. Екатеринбург, ул. Степана Разина, 15',
+          'DESCRIPTION:Празднуем ДР Ивана Пичугина (18 ноября) на уральском дерби КХЛ! Стартовое вбрасывание в 19:00.',
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+        const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'DR_Ivana_Pichugina_3_Dec.ics';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+      function launchConfetti() {
+        const canvas = document.getElementById('confettiCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const colors = ['#ef4444', '#ffffff', '#f59e0b', '#1e293b'];
+        const pieces = Array.from({ length: 85 }, () => ({
+          x: Math.random() * canvas.width,
+          y: -20 - Math.random() * 140,
+          w: 7 + Math.random() * 6,
+          h: 5 + Math.random() * 5,
+          vx: (Math.random() - 0.5) * 4,
+          vy: 3 + Math.random() * 4,
+          rot: Math.random() * 360,
+          vrot: (Math.random() - 0.5) * 10,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        }));
+
+        let frames = 0;
+        function draw() {
+          frames += 1;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          pieces.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.rot += p.vrot;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rot * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          });
+          if (frames < 140) {
+            requestAnimationFrame(draw);
+          } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+    })();
   </script>
 </body>
 </html>
