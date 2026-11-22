@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Приглашение на матч КХЛ: Автомобилист — Трактор | Иван Пичугин</title>
+  <title>Приглашение на матч КХЛ: Автомобилист — Трактор | VIP-ложа №14</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,9 +61,21 @@
         <h1 class="text-xl sm:text-3xl font-black tracking-tight text-white leading-tight">
           Шайбу! Шайбу! <span class="text-red-400">Уральское дерби в хорошей компании</span>
         </h1>
-        <p class="text-slate-300 text-xs sm:text-sm leading-snug">
-          <strong class="text-white">Иван Пичугин</strong> приглашает в VIP-ложу №14: пообщаться в тёплой обстановке, поболеть за наших и заодно поздравить хозяина ложи с недавним днём рождения.
-        </p>
+        <!-- Swipeable Facts Carousel -->
+        <div id="factsCarousel" class="rounded-xl bg-slate-800/60 border border-slate-700/80 p-3 sm:p-3.5 space-y-2 select-none">
+          <div class="flex items-center justify-between gap-2">
+            <span id="factLabel" class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-amber-300">А вы знали, что… (1/4)</span>
+            <div class="flex items-center gap-1.5">
+              <button id="factPrevBtn" type="button" aria-label="Предыдущий факт" class="w-6 h-6 rounded-md bg-slate-900/90 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold flex items-center justify-center transition">‹</button>
+              <button id="factNextBtn" type="button" aria-label="Следующий факт" class="w-6 h-6 rounded-md bg-slate-900/90 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold flex items-center justify-center transition">›</button>
+            </div>
+          </div>
+          <div class="min-h-[54px] sm:min-h-[48px] flex flex-col justify-center">
+            <div id="factTitle" class="text-xs sm:text-sm font-extrabold text-white leading-snug"></div>
+            <p id="factBody" class="text-[11px] sm:text-xs text-slate-300 leading-snug mt-0.5"></p>
+          </div>
+          <div id="factDots" class="flex items-center justify-center gap-1.5 pt-0.5"></div>
+        </div>
       </div>
 
       <!-- Match & Arena Strip -->
@@ -259,6 +271,79 @@
         });
       }
 
+
+      // Swipeable "Did you know?" Derby Stats Carousel
+      const facts = [
+        {
+          title: 'Счёт в истории КХЛ — 43:38, а по шайбам 199:189',
+          body: 'За 81 очный матч «Автомобилист» впереди и находится всего в одном точном броске от юбилейной 200-й шайбы в ворота «Трактора»!'
+        },
+        {
+          title: 'Средний тотал дерби — 5,53 шайбы за игру',
+          body: 'Скучных нулей в уральском противостоянии почти не бывает: команды стабильно выдают результативный хоккей с овертаймами и буллитами.'
+        },
+        {
+          title: 'Камбэк ноября: с 0:2 до победы по буллитам',
+          body: 'В прошлом дерби 8 ноября «Автомобилист» отыграл две шайбы и вырвал победу — здесь интрига держится до самой сирены.'
+        },
+        {
+          title: 'Особая примета VIP-ложи №14',
+          body: '18 ноября уже перелистнули в календаре, но 3 декабря в 14-й ложе всё равно найдётся повод поднять бокал за отличную компанию 😉'
+        }
+      ];
+      let factIdx = 0;
+      const factLabel = document.getElementById('factLabel');
+      const factTitle = document.getElementById('factTitle');
+      const factBody = document.getElementById('factBody');
+      const factDots = document.getElementById('factDots');
+      const factsCarousel = document.getElementById('factsCarousel');
+
+      function renderFact() {
+        const f = facts[factIdx];
+        factLabel.textContent = `А вы знали, что… (${factIdx + 1}/${facts.length})`;
+        factTitle.textContent = f.title;
+        factBody.textContent = f.body;
+        factDots.innerHTML = '';
+        facts.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.setAttribute('aria-label', `Факт ${i + 1}`);
+          dot.className = i === factIdx
+            ? 'w-4 h-1.5 rounded-full bg-amber-400 transition-all'
+            : 'w-1.5 h-1.5 rounded-full bg-slate-600 hover:bg-slate-400 transition-all';
+          dot.addEventListener('click', () => {
+            factIdx = i;
+            renderFact();
+          });
+          factDots.appendChild(dot);
+        });
+      }
+
+      document.getElementById('factPrevBtn').addEventListener('click', () => {
+        factIdx = (factIdx - 1 + facts.length) % facts.length;
+        renderFact();
+      });
+      document.getElementById('factNextBtn').addEventListener('click', () => {
+        factIdx = (factIdx + 1) % facts.length;
+        renderFact();
+      });
+
+      let touchStartX = 0;
+      factsCarousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      factsCarousel.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(dx) > 35) {
+          factIdx = dx < 0
+            ? (factIdx + 1) % facts.length
+            : (factIdx - 1 + facts.length) % facts.length;
+          renderFact();
+        }
+      }, { passive: true });
+
+      renderFact();
+
       const soundToggleBtn = document.getElementById('soundToggleBtn');
       const soundIcon = document.getElementById('soundIcon');
       const soundLabel = document.getElementById('soundLabel');
@@ -323,7 +408,7 @@
           badgeClass: 'bg-purple-500/20 text-purple-300 border border-purple-500/40',
           boxClass: 'bg-purple-950/35 border-purple-500/40',
           title: 'Запрос тренера отклонён!',
-          msg: 'Хозяин ложи Иван Пичугин посмотрел повтор на планшете: ваше участие в ложе — чистый гол без помехи вратарю!',
+          msg: 'Тренерский штаб пересмотрел момент на планшете: ваше участие в VIP-ложе №14 — чистый гол без помехи вратарю!',
           penalty: 10,
           btnText: 'Сдаюсь... или нет?'
         },
@@ -396,7 +481,7 @@
       document.getElementById('copyReplyBtn').addEventListener('click', () => {
         const name = document.getElementById('guestNameInput').value.trim();
         const role = document.getElementById('guestRoleSelect').value;
-        const prefix = name ? `Иван, привет! Это ${name}. ` : 'Иван, привет! ';
+        const prefix = name ? `Привет! Это ${name}. ` : 'Привет! ';
         const text = `${prefix}Заявка в состав принята — буду 3 декабря в 19:00 на «УГМК-Арене» (VIP-ложа №14, Автомобилист — Трактор). Амплуа: ${role}. До встречи на вбрасывании! 🏒`;
 
         const toast = document.getElementById('copyToast');
@@ -408,7 +493,7 @@
 
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text).then(
-            () => showToast('Ответ скопирован — можно отправлять Ивану!'),
+            () => showToast('Ответ скопирован — можно отправлять в чат!'),
             () => fallbackCopy(text, showToast)
           );
         } else {
@@ -425,7 +510,7 @@
         ta.select();
         try {
           document.execCommand('copy');
-          cb('Ответ скопирован — можно отправлять Ивану!');
+          cb('Ответ скопирован — можно отправлять в чат!');
         } catch (e) {
           cb('Не удалось скопировать — выделите текст вручную.');
         }
@@ -442,9 +527,9 @@
           'DTSTAMP:20261119T090000Z',
           'DTSTART:20261203T140000Z',
           'DTEND:20261203T170000Z',
-          'SUMMARY:Матч КХЛ: Автомобилист — Трактор (VIP-ложа №14, Иван Пичугин)',
+          'SUMMARY:Матч КХЛ: Автомобилист — Трактор (VIP-ложа №14)',
           'LOCATION:УГМК-Арена (VIP-ложа №14), г. Екатеринбург, ул. Степана Разина, 15',
-          'DESCRIPTION:Собираемся хорошей компанией в VIP-ложе №14 на уральское дерби КХЛ! Приглашает Иван Пичугин (и заодно повод поздравить с прошедшим ДР).',
+          'DESCRIPTION:Уральское дерби КХЛ на «УГМК-Арене» в VIP-ложе №14. Стартовое вбрасывание в 19:00.',
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\r\n');
